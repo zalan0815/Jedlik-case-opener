@@ -3,11 +3,12 @@ class Items {
         //"név;kép;láda;ritkaság;ár"
         let splitted = row.split(";");
 
-        this.name = splitted[0];
-        this.img = splitted[1];
-        this.case = splitted[2];
-        this.rarity = splitted[3];
-        this.price = Number(splitted[4]);
+        this.id = Number(splitted[0])
+        this.name = splitted[1];
+        this.img = splitted[2];
+        this.case = splitted[3];
+        this.rarity = splitted[4];
+        this.price = Number(splitted[5]);
     }
 
     
@@ -25,9 +26,10 @@ class Cases {
     constructor (row) {
         let splitted = row.split(";");
 
-        this.name = splitted[0];
-        this.img = splitted[1];
-        this.price = Number(splitted[2]);
+        this.id = Number(splitted[0])
+        this.name = splitted[1];
+        this.img = splitted[2];
+        this.price = Number(splitted[3]);
     }
 
     static load_list(list) {

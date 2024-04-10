@@ -6,3 +6,9 @@
 .cases {
     justify-content: space-between;
 }
+.modal{
+    --bs-modal-width: 1000px;
+}
+#opening-canvas {
+    height: 263.2px !important;
+}
