@@ -6,9 +6,7 @@ import { Cases } from "./class.js";
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(cases_list);
 
-defMoney(1000);
-document.getElementById("user-money").innerHTML = getMoney();
-
+getMoney();
 
 console.log(items);
 console.log(cases);
@@ -37,8 +35,8 @@ function displayCase(selectedCase) {
     const caseName = document.getElementById("case-name");
     const caseImg = document.getElementById("case-img");
     const caseItems = document.getElementById("case-items");
-    const open = document.getElementById("open");
-    open.addEventListener("click", opening);
+    const buy = document.getElementById("buy");
+    buy.addEventListener("click", buyCase);
     
     caseItems.innerHTML = "";
     
@@ -57,14 +55,18 @@ function displayCase(selectedCase) {
         
         caseItems.appendChild(item);
     });
-    open.items = itemsInCase;
+    buy.price = selectedCase.price;
 }
 
-function opening(event) {
-    const caseItems = document.getElementById("case-items");
-    let itemsInCase = event.currentTarget.items;
-
-    caseItems.innerHTML = '<canvas class="w-100 h-25" id="opening-canvas"></canvas>';
+function buyCase(event) {
+    const casePrice = event.currentTarget.price;
+    
+    if(getMoney() >= casePrice) {
+            setMoney(-casePrice);
+            alert("You bought the case!");
+        } else {
+            alert("You don't have enough money!");
+        }
 }
 
 function getMoney() {
@@ -75,7 +77,4 @@ function setMoney(value) {
     let userMoney = Number(localStorage.getItem('userMoney'));
     localStorage.setItem('userMoney', userMoney + value);
     document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
-}
-function defMoney(value) {
-    localStorage.setItem('userMoney', value);
 }
