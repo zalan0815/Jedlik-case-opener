@@ -14,7 +14,7 @@ const items_list = [
 
 //"id;név;kép;ár"
 const cases_list = [
-    "0;Személyzeti;./ladateszt.jpg;500",
+    "0;Személyzeti;./lada.png;500",
     "1;Személyzeti;./ladateszt.jpg;500",
     "2;Személyzeti;./ladateszt.jpg;500",
     "3;Személyzeti;./ladateszt.jpg;500",
