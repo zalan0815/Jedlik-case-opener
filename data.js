@@ -22,5 +22,20 @@ const cases_list = [
     "5;Személyzeti;./ladateszt.jpg;500"
 ]
 
+let userCases = localStorage.getItem('userCases');
+
+function getUserCases() {
+    return userCases;
+}
+function addUserCase(value) {
+    userCases.push(value);
+    updateLocalStorage();
+}
+function updateLocalStorage() {
+    localStorage.setItem('userCases', userCases);
+}
+
 export {items_list};
 export {cases_list};
+export {getUserCases};
+export {addUserCase};

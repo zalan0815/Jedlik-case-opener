@@ -1,14 +1,14 @@
 import { items_list } from "./data.js";
-import { cases_list } from "./data.js";
+import { getUserCases } from "./data.js";
+import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
 
 let items = Items.load_list(items_list);
-let cases = Cases.load_list(cases_list);
+let cases = Cases.load_list(getUserCases());
 
 defMoney(1000);
 document.getElementById("user-money").innerHTML = getMoney();
-
 
 console.log(items);
 console.log(cases);

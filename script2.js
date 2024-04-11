@@ -1,5 +1,7 @@
 import { items_list } from "./data.js";
 import { cases_list } from "./data.js";
+import { getUserCases } from "./data.js";
+import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
 
@@ -55,14 +57,16 @@ function displayCase(selectedCase) {
         
         caseItems.appendChild(item);
     });
-    buy.price = selectedCase.price;
+    buy.case = selectedCase;
 }
 
 function buyCase(event) {
-    const casePrice = event.currentTarget.price;
+    const caseClass = event.currentTarget.case;
+    const casePrice = caseClass.price;
     
     if(getMoney() >= casePrice) {
             setMoney(-casePrice);
+            addUserCase(caseClass.id + ';' + caseClass.name + ';' + caseClass.img + ';' + caseClass.price);
             alert("You bought the case!");
         } else {
             alert("You don't have enough money!");
