@@ -74,11 +74,11 @@ function buyCase(event) {
 }
 
 function getMoney() {
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
-    return localStorage.getItem('userMoney');
+    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
+    return JSON.parse(localStorage.getItem('userMoney'));
 }
 function setMoney(value) {
-    let userMoney = Number(localStorage.getItem('userMoney'));
-    localStorage.setItem('userMoney', userMoney + value);
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
+    let userMoney = Number(JSON.parse(localStorage.getItem('userMoney')));
+    localStorage.setItem('userMoney', JSON.stringify(userMoney + value));
+    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
 }

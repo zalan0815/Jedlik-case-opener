@@ -22,17 +22,28 @@ const cases_list = [
     "5;Személyzeti;./ladateszt.jpg;500"
 ]
 
+//localStorage.clear();
+
 let userCases = localStorage.getItem('userCases');
+if (userCases === null){
+    userCases = [];
+}
+else {
+    console.log(userCases);
+    userCases = JSON.parse(localStorage.getItem('userCases'));
+}
 
 function getUserCases() {
     return userCases;
 }
 function addUserCase(value) {
+    console.log(userCases);
     userCases.push(value);
+    console.log(userCases);
     updateLocalStorage();
 }
 function updateLocalStorage() {
-    localStorage.setItem('userCases', userCases);
+    localStorage.setItem('userCases', JSON.stringify(userCases));
 }
 
 export {items_list};

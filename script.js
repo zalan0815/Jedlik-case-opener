@@ -7,11 +7,12 @@ import { Cases } from "./class.js";
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(getUserCases());
 
-defMoney(1000);
+// console.log(items);
+// console.log(cases);
+
+//defMoney(1000);
 document.getElementById("user-money").innerHTML = getMoney();
 
-console.log(items);
-console.log(cases);
 
 const cases_div = document.getElementById("cases_div");
 for (let id = 0; id < cases.length; id++) {
@@ -68,14 +69,14 @@ function opening(event) {
 }
 
 function getMoney() {
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
-    return localStorage.getItem('userMoney');
+    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
+    return JSON.parse(localStorage.getItem('userMoney'));
 }
 function setMoney(value) {
-    let userMoney = Number(localStorage.getItem('userMoney'));
-    localStorage.setItem('userMoney', userMoney + value);
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
+    let userMoney = Number(JSON.parse(localStorage.getItem('userMoney')));
+    localStorage.setItem('userMoney', JSON.stringify(userMoney + value));
+    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
 }
 function defMoney(value) {
-    localStorage.setItem('userMoney', value);
+    localStorage.setItem('userMoney', JSON.stringify(value));
 }
