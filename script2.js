@@ -4,6 +4,8 @@ import { getUserCases } from "./data.js";
 import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
+import { getMoney } from "./data.js";
+import { setMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(cases_list);
@@ -71,14 +73,4 @@ function buyCase(event) {
         } else {
             alert("You don't have enough money!");
         }
-}
-
-function getMoney() {
-    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
-    return JSON.parse(localStorage.getItem('userMoney'));
-}
-function setMoney(value) {
-    let userMoney = Number(JSON.parse(localStorage.getItem('userMoney')));
-    localStorage.setItem('userMoney', JSON.stringify(userMoney + value));
-    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
 }

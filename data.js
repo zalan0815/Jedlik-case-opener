@@ -46,7 +46,26 @@ function updateLocalStorage() {
     localStorage.setItem('userCases', JSON.stringify(userCases));
 }
 
+
+let userMoney = localStorage.getItem('userMoney');
+if (userMoney === null){
+    setMoney(1000);
+}
+else {
+    setMoney(0);
+}
+function getMoney() {
+    return localStorage.getItem('userMoney');
+}
+function setMoney(value) {
+    let userMoney = Number(localStorage.getItem('userMoney'));
+    localStorage.setItem('userMoney', userMoney + value);
+    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
+}
+
 export {items_list};
 export {cases_list};
 export {getUserCases};
 export {addUserCase};
+export {getMoney};
+export {setMoney};

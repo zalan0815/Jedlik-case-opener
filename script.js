@@ -3,6 +3,8 @@ import { getUserCases } from "./data.js";
 import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
+import { getMoney } from "./data.js";
+import { setMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(getUserCases());
@@ -61,22 +63,60 @@ function displayCase(selectedCase) {
     open.items = itemsInCase;
 }
 
+function shuffle(list) {
+    let i = list.length;
+
+    while (i != 0) {
+        let rndi = Math.floor(Math.random() * i);
+        i--;
+
+        [list[i], list[rndi]] = [list[rndi], list[i]];
+    }
+}
+
+let ctx;
+let c;
+let w;
+let imgSize = 300;
+let speed = 100;
+let count;
+let itemsInCase;
+let myInterval;
 function opening(event) {
     const caseItems = document.getElementById("case-items");
-    let itemsInCase = event.currentTarget.items;
+    itemsInCase = event.currentTarget.items;
+    shuffle(itemsInCase);
 
-    caseItems.innerHTML = '<canvas class="w-100 h-25" id="opening-canvas"></canvas>';
+    caseItems.innerHTML = '<canvas class="w-100" id="opening-canvas"></canvas>';
+
+    c = document.getElementById("opening-canvas");
+    c.width = 1920;
+    c.height = 1080;
+    ctx = c.getContext("2d");
+    w = 0;
+    count = 0;
+    myInterval = setInterval(animate, 1);
 }
 
-function getMoney() {
-    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
-    return JSON.parse(localStorage.getItem('userMoney'));
-}
-function setMoney(value) {
-    let userMoney = Number(JSON.parse(localStorage.getItem('userMoney')));
-    localStorage.setItem('userMoney', JSON.stringify(userMoney + value));
-    document.getElementById("user-money").innerHTML = JSON.parse(localStorage.getItem('userMoney'));
-}
-function defMoney(value) {
-    localStorage.setItem('userMoney', JSON.stringify(value));
+
+function animate() {
+    let w2 = w;
+    ctx.clearRect(0, 0, c.width, c.height);
+        for (let index = 0; index < 10; index++) {
+            itemsInCase.forEach(element => {
+                let itemImg = new Image();
+                itemImg.src = element.img;
+                ctx.drawImage(itemImg, w2, 0, imgSize, imgSize * 1.8);
+                w2 += imgSize;
+            });
+        }
+        w -= speed;
+        if (count % 5 == 0) {
+            speed--;
+        }
+        if (speed <= 0) {
+            clearInterval(myInterval); 
+        }
+        count++;
+        console.log(speed);
 }
