@@ -36,4 +36,5 @@
 
 .fancy-coloring{
     background: rgb(2,0,36);
-    background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(196,38,38,0.7343312324929971) 35%, rgba(0,121,255,0.9416141456582633) 100%);}
+    background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(196,38,38,0.7343312324929971) 35%, rgba(0,121,255,0.9416141456582633) 100%);
+}

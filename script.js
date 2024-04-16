@@ -78,11 +78,12 @@ let ctx;
 let c;
 let w;
 let imgSize = 300;
-let speed = 100;
+let speed;
 let count;
 let itemsInCase;
 let myInterval;
 function opening(event) {
+    event.target.disabled = 'true';
     const caseItems = document.getElementById("case-items");
     itemsInCase = event.currentTarget.items;
     shuffle(itemsInCase);
@@ -95,28 +96,47 @@ function opening(event) {
     ctx = c.getContext("2d");
     w = 0;
     count = 0;
+    speed = 90;
     myInterval = setInterval(animate, 1);
 }
-
 
 function animate() {
     let w2 = w;
     ctx.clearRect(0, 0, c.width, c.height);
-        for (let index = 0; index < 10; index++) {
-            itemsInCase.forEach(element => {
-                let itemImg = new Image();
-                itemImg.src = element.img;
-                ctx.drawImage(itemImg, w2, 0, imgSize, imgSize * 1.8);
-                w2 += imgSize;
-            });
-        }
-        w -= speed;
-        if (count % 5 == 0) {
-            speed--;
-        }
-        if (speed <= 0) {
-            clearInterval(myInterval); 
-        }
-        count++;
-        console.log(speed);
+    for (let index = 0; index < 10; index++) {
+        itemsInCase.forEach(element => {
+            let itemImg = new Image();
+            itemImg.src = element.img;
+            ctx.drawImage(itemImg, w2, c.height/2 - (imgSize * 1.8 / 2), imgSize, imgSize * 1.8);
+            w2 += imgSize;
+        });
+    }
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.moveTo(c.width/2, c.height/2 - (imgSize * 1.8 / 2));
+    ctx.lineTo(c.width/2, c.height/2 + (imgSize * 1.8 / 2));
+    ctx.stroke();
+    w -= speed;
+    if (count % 5 == 0) {
+        speed--;
+    }
+    if (speed <= 0) {
+        opened(w);
+        clearInterval(myInterval); 
+    }
+    count++;
+}
+
+function opened(starting) {
+    console.log("kész");
+    let l = c.width/2 - starting;
+    let numberOfImages = Math.ceil(l / imgSize);
+    showItem(itemsInCase[Math.floor(numberOfImages / itemsInCase.length)]);
+}
+
+function showItem(item) {
+    let itemModal = document.getElementById("item-modal");
+    let itemImg = document.getElementById("item-img");
+    itemModal.show();
 }
