@@ -1,7 +1,7 @@
-import { setMoney } from "./data.js";
+import { addMoney } from "./data.js";
 
 document.getElementById('more-money').addEventListener('click', () => {
-    setMoney(1000);
+    addMoney(1000);
 });
 
 document.getElementById('reset').addEventListener('click', () => {

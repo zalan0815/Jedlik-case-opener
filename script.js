@@ -4,7 +4,7 @@ import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
 import { getMoney } from "./data.js";
-import { setMoney } from "./data.js";
+import { addMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(getUserCases());

@@ -49,15 +49,15 @@ function updateLocalStorage() {
 
 let userMoney = localStorage.getItem('userMoney');
 if (userMoney === null){
-    setMoney(1000);
+    addMoney(1000);
 }
 else {
-    setMoney(0);
+    addMoney(0);
 }
 function getMoney() {
     return localStorage.getItem('userMoney');
 }
-function setMoney(value) {
+function addMoney(value) {
     let userMoney = Number(localStorage.getItem('userMoney'));
     localStorage.setItem('userMoney', userMoney + value);
     document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
@@ -68,4 +68,4 @@ export {cases_list};
 export {getUserCases};
 export {addUserCase};
 export {getMoney};
-export {setMoney};
+export {addMoney};

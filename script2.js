@@ -5,7 +5,7 @@ import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
 import { getMoney } from "./data.js";
-import { setMoney } from "./data.js";
+import { addMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(cases_list);
@@ -67,7 +67,7 @@ function buyCase(event) {
     const casePrice = caseClass.price;
     
     if(getMoney() >= casePrice) {
-            setMoney(-casePrice);
+            addMoney(-casePrice);
             addUserCase(caseClass.id + ';' + caseClass.name + ';' + caseClass.img + ';' + caseClass.price);
             alert("You bought the case!");
         } else {
