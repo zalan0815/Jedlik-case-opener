@@ -136,7 +136,15 @@ function opened(starting) {
 }
 
 function showItem(item) {
-    let itemModal = document.getElementById("item-modal");
-    let itemImg = document.getElementById("item-img");
-    itemModal.show();
+    const modal = new bootstrap.Modal(document.getElementById('show-item'), {
+        keyboard: false
+    });
+
+    modal.show();
+
+    console.log(item);
+
+    document.getElementById("item-name").innerHTML = item.name;
+    document.getElementById("item-img").src = item.img;
+    document.getElementById("item-price").innerHTML = item.price;
 }
