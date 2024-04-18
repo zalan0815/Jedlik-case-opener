@@ -1,7 +1,11 @@
 import { items_list } from "./data.js";
 import { cases_list } from "./data.js";
+import { getUserCases } from "./data.js";
+import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
+import { getMoney } from "./data.js";
+import { addMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(cases_list);
@@ -55,26 +59,18 @@ function displayCase(selectedCase) {
         
         caseItems.appendChild(item);
     });
-    buy.price = selectedCase.price;
+    buy.case = selectedCase;
 }
 
 function buyCase(event) {
-    const casePrice = event.currentTarget.price;
+    const caseClass = event.currentTarget.case;
+    const casePrice = caseClass.price;
     
     if(getMoney() >= casePrice) {
-            setMoney(-casePrice);
+            addMoney(-casePrice);
+            addUserCase(caseClass.id + ';' + caseClass.name + ';' + caseClass.img + ';' + caseClass.price);
             alert("You bought the case!");
         } else {
             alert("You don't have enough money!");
         }
-}
-
-function getMoney() {
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
-    return localStorage.getItem('userMoney');
-}
-function setMoney(value) {
-    let userMoney = Number(localStorage.getItem('userMoney'));
-    localStorage.setItem('userMoney', userMoney + value);
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
 }

@@ -1,17 +1,20 @@
 import { items_list } from "./data.js";
-import { cases_list } from "./data.js";
+import { getUserCases } from "./data.js";
+import { addUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
+import { getMoney } from "./data.js";
+import { addMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
-let cases = Cases.load_list(cases_list);
+let cases = Cases.load_list(getUserCases());
 
-defMoney(1000);
+// console.log(items);
+// console.log(cases);
+
+//defMoney(1000);
 document.getElementById("user-money").innerHTML = getMoney();
 
-
-console.log(items);
-console.log(cases);
 
 const cases_div = document.getElementById("cases_div");
 for (let id = 0; id < cases.length; id++) {
@@ -60,22 +63,88 @@ function displayCase(selectedCase) {
     open.items = itemsInCase;
 }
 
+function shuffle(list) {
+    let i = list.length;
+
+    while (i != 0) {
+        let rndi = Math.floor(Math.random() * i);
+        i--;
+
+        [list[i], list[rndi]] = [list[rndi], list[i]];
+    }
+}
+
+let ctx;
+let c;
+let w;
+let imgSize = 300;
+let speed;
+let count;
+let itemsInCase;
+let myInterval;
 function opening(event) {
+    event.target.disabled = 'true';
     const caseItems = document.getElementById("case-items");
-    let itemsInCase = event.currentTarget.items;
+    itemsInCase = event.currentTarget.items;
+    shuffle(itemsInCase);
 
-    caseItems.innerHTML = '<canvas class="w-100 h-25" id="opening-canvas"></canvas>';
+    caseItems.innerHTML = '<canvas class="w-100" id="opening-canvas"></canvas>';
+
+    c = document.getElementById("opening-canvas");
+    c.width = 1920;
+    c.height = 1080;
+    ctx = c.getContext("2d");
+    w = 0;
+    count = 0;
+    speed = 90;
+    myInterval = setInterval(animate, 1);
 }
 
-function getMoney() {
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
-    return localStorage.getItem('userMoney');
+function animate() {
+    let w2 = w;
+    ctx.clearRect(0, 0, c.width, c.height);
+    for (let index = 0; index < 10; index++) {
+        itemsInCase.forEach(element => {
+            let itemImg = new Image();
+            itemImg.src = element.img;
+            ctx.drawImage(itemImg, w2, c.height/2 - (imgSize * 1.8 / 2), imgSize, imgSize * 1.8);
+            w2 += imgSize;
+        });
+    }
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.moveTo(c.width/2, c.height/2 - (imgSize * 1.8 / 2));
+    ctx.lineTo(c.width/2, c.height/2 + (imgSize * 1.8 / 2));
+    ctx.stroke();
+    w -= speed;
+    if (count % 5 == 0) {
+        speed--;
+    }
+    if (speed <= 0) {
+        opened(w);
+        clearInterval(myInterval); 
+    }
+    count++;
 }
-function setMoney(value) {
-    let userMoney = Number(localStorage.getItem('userMoney'));
-    localStorage.setItem('userMoney', userMoney + value);
-    document.getElementById("user-money").innerHTML = localStorage.getItem('userMoney');
+
+function opened(starting) {
+    console.log("kész");
+    let l = c.width/2 - starting;
+    let numberOfImages = Math.ceil(l / imgSize);
+    showItem(itemsInCase[Math.floor(numberOfImages / itemsInCase.length)]);
 }
-function defMoney(value) {
-    localStorage.setItem('userMoney', value);
+
+function showItem(item) {
+    const modal = new bootstrap.Modal(document.getElementById('show-item'), {
+        keyboard: false
+    });
+
+    modal.show();
+
+    console.log(item);
+
+    document.getElementById("item-name").innerHTML = item.name;
+    document.getElementById("item-img").src = item.img;
+    document.getElementById("item-price").innerHTML = item.price;
 }
