@@ -6,4 +6,5 @@ document.getElementById('more-money').addEventListener('click', () => {
 
 document.getElementById('reset').addEventListener('click', () => {
     localStorage.clear();
+    location.reload();
 });

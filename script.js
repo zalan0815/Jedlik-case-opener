@@ -1,4 +1,4 @@
-import { items_list } from "./data.js";
+import { addUserItem, items_list } from "./data.js";
 import { getUserCases } from "./data.js";
 import { addUserCase } from "./data.js";
 import { deleteUserCase } from "./data.js";
@@ -143,6 +143,7 @@ function opened(starting) {
 }
 
 function showItem(item) {
+    document.getElementById("show-item").style.overflow = "hidden";
     const modal = new bootstrap.Modal(document.getElementById('show-item'), {
         keyboard: false
     });
@@ -154,6 +155,9 @@ function showItem(item) {
     document.getElementById("item-price").innerHTML = item.price;
     document.getElementById("ok").addEventListener('click', () => {
         deleteUserCase(deleteCase);
+        document.getElementById("show-item").style.overflow = "scroll";
+        addUserItem(item.id + ';' + item.name + ';' + item.img + ';' + item.rarity + ';' + item.price);
+
         location.reload();
         openingInProgress = false;
     });

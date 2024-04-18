@@ -24,6 +24,7 @@ const cases_list = [
 
 //localStorage.clear();
 
+//user cases
 let userCases = localStorage.getItem('userCases');
 if (userCases === null){
     userCases = [];
@@ -50,6 +51,34 @@ function updateLocalStorage() {
 }
 
 
+//user items
+let userItems = localStorage.getItem('userItems');
+if (userItems === null){
+    userItems = [];
+}
+else {
+    userItems = JSON.parse(localStorage.getItem('userItems'));
+}
+
+function getUserItems() {
+    return userItems;
+}
+function addUserItem(value) {
+    userItems.push(value);
+    updateLocalStorage2();
+}
+function deleteUserItem(value) {
+    let itemToDelete = value.id + ';'+ value.name +';'+ value.img +';'+ value.case + ';' + value.rarity + ';' + value.price;
+    let filtered = userItems.filter(function(e) { return e !== itemToDelete;});
+    userItems = filtered;
+    updateLocalStorage2();
+}
+function updateLocalStorage2() {
+    localStorage.setItem('userItems', JSON.stringify(userItems));
+}
+
+
+//user money
 let userMoney = localStorage.getItem('userMoney');
 if (userMoney === null){
     addMoney(1000);
@@ -71,5 +100,8 @@ export {cases_list};
 export {getUserCases};
 export {addUserCase};
 export {deleteUserCase};
+export {getUserItems};
+export {addUserItem};
+export {deleteUserItem};
 export {getMoney};
 export {addMoney};
