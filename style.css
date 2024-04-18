@@ -68,3 +68,24 @@
         transform:rotate(360deg);
     }
 }
+
+.gyakori{
+    background: rgb(152,152,154);
+    background: radial-gradient(circle, rgba(152,152,154,1) 0%, rgba(242,242,242,1) 35%, rgba(96,100,103,0.9416141456582633) 100%);
+}
+.ritka{
+    background: rgb(22,170,7);
+    background: radial-gradient(circle, rgba(22,170,7,1) 0%, rgba(43,166,17,1) 35%, rgba(96,100,103,0.9416141456582633) 100%);
+}
+.kivételes{
+    background: rgb(7,99,170);
+    background: radial-gradient(circle, rgba(7,99,170,1) 0%, rgba(17,92,166,1) 35%, rgba(96,100,103,0.9416141456582633) 100%);
+}
+.epikus{
+    background: rgb(120,7,170);
+    background: radial-gradient(circle, rgba(120,7,170,1) 0%, rgba(114,17,166,1) 35%, rgba(96,100,103,0.9416141456582633) 100%);
+}
+.legendás{
+    background: rgb(255,241,0);
+    background: radial-gradient(circle, rgba(255,241,0,1) 0%, rgba(255,121,0,1) 35%, rgba(254,255,1,1) 100%);
+}
