@@ -34,7 +34,6 @@ class Cases {
 
     static load_list(list) {
         let cases = [];
-        console.log(list);
         if (list != []) {
             list.forEach(element => {
                 cases.push(new Cases(element))
