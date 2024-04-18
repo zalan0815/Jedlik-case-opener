@@ -1,6 +1,7 @@
 import { items_list } from "./data.js";
 import { getUserCases } from "./data.js";
 import { addUserCase } from "./data.js";
+import { deleteUserCase } from "./data.js";
 import { Items } from "./class.js";
 import { Cases } from "./class.js";
 import { getMoney } from "./data.js";
@@ -8,6 +9,8 @@ import { addMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(getUserCases());
+
+let deleteCase;
 
 // console.log(items);
 // console.log(cases);
@@ -31,6 +34,7 @@ function getCase() {
     cases.forEach(element => {
         if (element.id == id) {
             selectedCase = element;
+            deleteCase = element;
         }
     });
     displayCase(selectedCase);
@@ -82,22 +86,25 @@ let speed;
 let count;
 let itemsInCase;
 let myInterval;
+let openingInProgress = false;
 function opening(event) {
-    event.target.disabled = 'true';
-    const caseItems = document.getElementById("case-items");
-    itemsInCase = event.currentTarget.items;
-    shuffle(itemsInCase);
-
-    caseItems.innerHTML = '<canvas class="w-100" id="opening-canvas"></canvas>';
-
-    c = document.getElementById("opening-canvas");
-    c.width = 1920;
-    c.height = 1080;
-    ctx = c.getContext("2d");
-    w = 0;
-    count = 0;
-    speed = 90;
-    myInterval = setInterval(animate, 1);
+    if (!openingInProgress) {
+        openingInProgress = true;
+        const caseItems = document.getElementById("case-items");
+        itemsInCase = event.currentTarget.items;
+        shuffle(itemsInCase);
+    
+        caseItems.innerHTML = '<canvas class="w-100" id="opening-canvas"></canvas>';
+    
+        c = document.getElementById("opening-canvas");
+        c.width = 1920;
+        c.height = 1080;
+        ctx = c.getContext("2d");
+        w = 0;
+        count = 0;
+        speed = 90;
+        myInterval = setInterval(animate, 1);
+    }
 }
 
 function animate() {
@@ -142,9 +149,12 @@ function showItem(item) {
 
     modal.show();
 
-    console.log(item);
-
     document.getElementById("item-name").innerHTML = item.name;
     document.getElementById("item-img").src = item.img;
     document.getElementById("item-price").innerHTML = item.price;
+    document.getElementById("ok").addEventListener('click', () => {
+        deleteUserCase(deleteCase);
+        location.reload();
+        openingInProgress = false;
+    });
 }
