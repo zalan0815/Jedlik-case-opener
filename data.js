@@ -15,11 +15,11 @@ const items_list = [
 //"id;név;kép;ár"
 const cases_list = [
     "0;Személyzeti;./lada.png;500",
-    "1;Személyzeti;./ladateszt.jpg;500",
-    "2;Személyzeti;./ladateszt.jpg;500",
-    "3;Személyzeti;./ladateszt.jpg;500",
-    "4;Személyzeti;./ladateszt.jpg;500",
-    "5;Személyzeti;./ladateszt.jpg;500"
+    "1;Tanári;./ladateszt.jpg;1500",
+    "2;Felszerelés;./ladateszt.jpg;4000",
+    "3;Diák;./ladateszt.jpg;3500",
+    "4;B-Épület;./ladateszt.jpg;2000",
+    "5;Speciális;./ladateszt.jpg;5000"
 ]
 
 export {items_list};
