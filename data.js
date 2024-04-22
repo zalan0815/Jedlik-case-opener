@@ -42,8 +42,13 @@ function addUserCase(value) {
 }
 function deleteUserCase(value) {
     let caseToDelete = value.id + ';'+ value.name +';'+ value.img +';'+ value.price;
-    let filtered = userCases.filter(function(e) { return e !== caseToDelete;});
-    userCases = filtered;
+    let i = 0;
+    while (userCases[i] != caseToDelete &&  i < userCases.length) {
+        i++;
+    }
+    if (i < userCases.length) {
+        userCases.splice(i, 1);
+    }
     updateLocalStorage();
 }
 function updateLocalStorage() {
@@ -69,8 +74,13 @@ function addUserItem(value) {
 }
 function deleteUserItem(value) {
     let itemToDelete = value.id + ';'+ value.name +';'+ value.img +';'+ value.case + ';' + value.rarity + ';' + value.price;
-    let filtered = userItems.filter(function(e) { return e !== itemToDelete;});
-    userItems = filtered;
+    let i = 0;
+    while (userItems[i] != itemToDelete &&  i < userItems.length) {
+        i++;
+    }
+    if (i < userItems.length) {
+        userItems.splice(i, 1);
+    }
     updateLocalStorage2();
 }
 function updateLocalStorage2() {

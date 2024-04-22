@@ -43,6 +43,24 @@
   <div class="body p-5">
     <!-- Button trigger modal -->
     <div class="items row" id="items_div"></div>
+    <!-- Modal -->
+    <div class="modal fade text-center" id="show-item" tabindex="-1" aria-labelledby="show-item" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 mx-auto" id="item-name"></h1>
+          </div>
+          <div class="modal-body mx-auto">
+            <img id="item-img" src="" alt="">
+            <h2>Price: <span id="item-price"></span> Ft</h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn mx-auto btn-outline-danger" data-bs-dismiss="modal" id="sell">Sell</button>
+            <button type="button" class="btn mx-auto btn-outline-success" data-bs-dismiss="modal" id="ok">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

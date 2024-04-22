@@ -39,6 +39,7 @@ function displayCase(selectedCase) {
     const caseName = document.getElementById("case-name");
     const caseImg = document.getElementById("case-img");
     const caseItems = document.getElementById("case-items");
+    const casePrice = document.getElementById("case-price");
     const buy = document.getElementById("buy");
     buy.addEventListener("click", buyCase);
     
@@ -46,6 +47,7 @@ function displayCase(selectedCase) {
     
     caseName.innerHTML = selectedCase.name;
     caseImg.src = selectedCase.img;
+    casePrice.innerHTML = selectedCase.price;
     let itemsInCase = [];
     items.forEach(element => {
         if (element.case == selectedCase.name) {

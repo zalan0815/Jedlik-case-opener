@@ -8,3 +8,7 @@ document.getElementById('reset').addEventListener('click', () => {
     localStorage.clear();
     location.reload();
 });
+
+document.getElementById('take-money').addEventListener('click', () => {
+    addMoney(-1000);
+});

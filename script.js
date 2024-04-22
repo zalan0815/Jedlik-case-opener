@@ -156,7 +156,7 @@ function showItem(item) {
     document.getElementById("ok").addEventListener('click', () => {
         deleteUserCase(deleteCase);
         document.getElementById("show-item").style.overflow = "scroll";
-        addUserItem(item.id + ';' + item.name + ';' + item.img + ';' + item.rarity + ';' + item.price);
+        addUserItem(item.id + ';' + item.name + ';' + item.img + ';' + item.rarity + ';' + item.case + ';' + item.price);
 
         location.reload();
         openingInProgress = false;
