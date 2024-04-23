@@ -8,6 +8,9 @@ import { getMoney } from "./data.js";
 import { addMoney } from "./data.js";
 
 let items = Items.load_list(getUserItems());
+if (items.length != 0) {
+    document.getElementById("noitems").style.display = "none";
+}
 
 let deleteItem;
 

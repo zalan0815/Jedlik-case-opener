@@ -9,6 +9,10 @@ import { addMoney } from "./data.js";
 
 let items = Items.load_list(items_list);
 let cases = Cases.load_list(getUserCases());
+console.log(cases);
+if (cases.length != 0) {
+    document.getElementById("nocase").style.display = "none";
+}
 
 let deleteCase;
 
