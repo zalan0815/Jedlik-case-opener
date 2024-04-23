@@ -151,7 +151,7 @@ function showItem(item) {
     const modal = new bootstrap.Modal(document.getElementById('show-item'), {
         keyboard: false
     });
-
+    
     modal.show();
 
     document.getElementById("item-name").innerHTML = item.name;

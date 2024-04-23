@@ -59,21 +59,22 @@
     height: 600px;
 }
 
+#user-money{
+    color: aliceblue;
+    text-decoration: none;
+}
+
 #item-img{
     width: 600px;
     height: 600px;
-    animation-name: spin;
-    animation-duration: 6000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation: wiggle 2.5s infinite;
 }
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   45% { transform: rotate(0deg); }
+   65% { transform: rotate(5deg); }
+   85% { transform: rotate(-5deg); }
+   100% { transform: rotate(0deg); }
 }
 
 .gyakori{
