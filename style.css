@@ -55,6 +55,8 @@
 }
 
 #item-img{
+    width: 600px;
+    height: 600px;
     animation-name: spin;
     animation-duration: 6000ms;
     animation-iteration-count: infinite;
