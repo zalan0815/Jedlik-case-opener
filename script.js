@@ -143,7 +143,7 @@ function opened(starting) {
     console.log("kész");
     let l = c.width/2 - starting;
     let numberOfImages = Math.ceil(l / imgSize);
-    showItem(itemsInCase[Math.floor(numberOfImages / itemsInCase.length)]);
+    showItem(itemsInCase[((numberOfImages - 1) % itemsInCase.length + 1) - 1])    
 }
 
 function showItem(item) {

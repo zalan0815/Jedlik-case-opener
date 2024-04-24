@@ -20,7 +20,7 @@ const items_list = [
     "16;Slomobil;/img/Slomobil.pngTanári;Legendás;1500",
     "17;Monostabil szelep;/img/MonostabilSzelep.png;Felszerelés;Gyakori;200",
     "18;Billentyűzet;/img/Billentyűzet.png;Felszerelés;Gyakori;200",
-    "19;Járólap;/img/Járólap..png;Felszerelés;Gyakori;200",
+    "19;Járólap;/img/Járólap.png;Felszerelés;Gyakori;200",
     "20;Jó billentyűzet;/img/JóBillentyűzet.png;Felszerelés;Ritka;600",
     "21;Tanári gép;/img/TanáriGép.png;Felszerelés;Kivételes;750",
     "22;Kottra pendriveja;/img/KottraPendriveja.png;Felszerelés;Epikus;1000",
