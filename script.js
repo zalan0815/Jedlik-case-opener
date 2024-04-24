@@ -11,7 +11,7 @@ let items = Items.load_list(items_list);
 let cases = Cases.load_list(getUserCases());
 console.log(cases);
 if (cases.length != 0) {
-    document.getElementById("nocase").style.display = "none";
+    document.getElementById("nocases").style.display = "none";
 }
 
 let deleteCase;
@@ -114,7 +114,7 @@ function opening(event) {
 function animate() {
     let w2 = w;
     ctx.clearRect(0, 0, c.width, c.height);
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 15; index++) {
         itemsInCase.forEach(element => {
             let itemImg = new Image();
             itemImg.src = element.img;
