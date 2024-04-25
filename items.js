@@ -38,10 +38,12 @@ function getItem() {
 }
 
 function displayItem(selectedItem) {
+    console.log(selectedItem);
     document.getElementById("show-item").style.overflow = "hidden";
     document.getElementById("item-name").innerHTML = selectedItem.name;
     document.getElementById("item-img").src = selectedItem.img;
     document.getElementById("item-price").innerHTML = selectedItem.price;
+    document.querySelector(".modal-body").className = "modal-body " + selectedItem.rarity;
     document.getElementById("ok").addEventListener('click', () => {
         document.getElementById("show-item").style.overflow = "scroll";
     });

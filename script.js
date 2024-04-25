@@ -157,10 +157,11 @@ function showItem(item) {
     document.getElementById("item-name").innerHTML = item.name;
     document.getElementById("item-img").src = item.img;
     document.getElementById("item-price").innerHTML = item.price;
+    document.querySelectorAll(".modal-body")[1].className = "modal-body " + item.rarity;
     document.getElementById("ok").addEventListener('click', () => {
         deleteUserCase(deleteCase);
         document.getElementById("show-item").style.overflow = "scroll";
-        addUserItem(item.id + ';' + item.name + ';' + item.img + ';' + item.rarity + ';' + item.case + ';' + item.price);
+        addUserItem(item.id + ';' + item.name + ';' + item.img + ';' + item.case + ';' + item.rarity + ';' + item.price);
 
         location.reload();
         openingInProgress = false;
