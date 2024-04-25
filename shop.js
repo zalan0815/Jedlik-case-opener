@@ -56,9 +56,9 @@ function displayCase(selectedCase) {
     });
     itemsInCase.forEach(element => {
         const item = document.createElement('div');
-        item.innerHTML = '<img src="'+ element.img +'" class="w-100"></div>';
-        item.className = 'col-2'
-        
+        item.innerHTML = '<img src="'+ element.img +'" class="w-100 hover-img"></div>';
+        item.className = 'col-2 container'
+
         caseItems.appendChild(item);
     });
     buy.case = selectedCase;
@@ -71,8 +71,8 @@ function buyCase(event) {
     if(getMoney() >= casePrice) {
             addMoney(-casePrice);
             addUserCase(caseClass.id + ';' + caseClass.name + ';' + caseClass.img + ';' + caseClass.price);
-            alert("You bought the case!");
+            alert("Sikeres vétel!");
         } else {
-            alert("You don't have enough money!");
+            alert("Nincs elég pénz az egyenlegeden!");
         }
 }
