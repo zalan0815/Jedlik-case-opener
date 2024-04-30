@@ -11,6 +11,7 @@ let items = Items.load_list(getUserItems());
 if (items.length != 0) {
     document.getElementById("noitems").style.display = "none";
 }
+items.sort(function(a,b) {return (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0);} );
 
 let deleteItem;
 
@@ -19,7 +20,7 @@ getMoney();
 const items_div = document.getElementById("items_div");
 for (let id = 0; id < items.length; id++) {
     const element = items[id];
-    items_div.innerHTML += '<div type="button" class="btn btn-primary col-2 m-2" id="item' + id + '" data-bs-toggle="modal" data-bs-target="#show-item" data-id="' + element.id + '"><img src="'+ element.img +'" class="item-img w-100 my-auto"></div>';
+    items_div.innerHTML += '<div type="button" class="btn btn-primary col-2 border border-5 rounded border-dark" id="item' + id + '" data-bs-toggle="modal" data-bs-target="#show-item" data-id="' + element.id + '"><img src="'+ element.img +'" class="item-img w-100 my-auto"></div>';
 }
 for (let id = 0; id < items.length; id++) {
     document.getElementById("item" + id).addEventListener("click", getItem);
@@ -35,7 +36,7 @@ function getItem() {
         }
     });
     displayItem(selectedItem);
-}
+}{}
 
 function displayItem(selectedItem) {
     console.log(selectedItem);

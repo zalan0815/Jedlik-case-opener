@@ -149,6 +149,7 @@ function opened(starting) {
 function showItem(item) {
     document.getElementById("show-item").style.overflow = "hidden";
     const modal = new bootstrap.Modal(document.getElementById('show-item'), {
+        backdrop: 'static',
         keyboard: false
     });
     
