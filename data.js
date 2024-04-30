@@ -45,12 +45,11 @@ const items_list = [
 
 //"id;név;kép;ár"
 const cases_list = [
-    "0;Személyzeti;./img/lada.png;500",
-    "1;Tanári;./img/ladateszt.png;1500",
-    "2;Felszerelés;./img/ladateszt.png;4000",
-    "3;Diák;./img/ladateszt.png;3500",
-    "4;B-Épület;./img/ladateszt.png;2000",
-    "5;Speciális;./img/ladateszt.png;5000"
+    "0;Személyzeti;./img/szemelyzeti.png;500",
+    "1;Tanári;./img/tanari.png;1500",
+    "2;Felszerelés;./img/felszereles.png;4000",
+    "3;Diák;./img/diak.png;3500",
+    "4;B-Épület;./img/b-epulet.png;2000",
 ]
 
 //localStorage.clear();
