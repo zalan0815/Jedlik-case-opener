@@ -18,7 +18,7 @@ console.log(cases);
 const cases_div = document.getElementById("cases_div");
 for (let id = 0; id < cases.length; id++) {
     const element = cases[id];
-    cases_div.innerHTML += '<div type="button" class="btn btn-primary col-2 m-2" id="case' + id + '" data-bs-toggle="modal" data-bs-target="#caseModal" data-id="' + element.id + '"><img src="'+ element.img +'" class="w-100"></div>';
+    cases_div.innerHTML += '<div type="button" class="btn btn-primary col-2 m-2 d-flex align-items-center" id="case' + id + '" data-bs-toggle="modal" data-bs-target="#caseModal" data-id="' + element.id + '"><img src="'+ element.img +'" class="w-100"></div>';
 }
 for (let id = 0; id < cases.length; id++) {
     document.getElementById("case" + id).addEventListener("click", getCase);
@@ -56,8 +56,10 @@ function displayCase(selectedCase) {
     });
     itemsInCase.forEach(element => {
         const item = document.createElement('div');
-        item.innerHTML = '<img src="'+ element.img +'" class="w-100 hover-img"></div>';
+        item.innerHTML = '<img src="'+ element.img +'" class="w-100"></div>';
         item.className = 'col-2 container'
+        item.dataset.title = element.name + " " + element.price + " Ft";
+        item.style.setProperty('--rarity', `var(--${element.rarity})`);
 
         caseItems.appendChild(item);
     });

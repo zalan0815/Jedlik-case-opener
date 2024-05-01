@@ -20,7 +20,7 @@ getMoney();
 const items_div = document.getElementById("items_div");
 for (let id = 0; id < items.length; id++) {
     const element = items[id];
-    items_div.innerHTML += '<div type="button" class="btn btn-primary col-2 border border-5 rounded border-dark" id="item' + id + '" data-bs-toggle="modal" data-bs-target="#show-item" data-id="' + element.id + '"><img src="'+ element.img +'" class="item-img w-100 my-auto"></div>';
+    items_div.innerHTML += '<div type="button" class="btn btn-primary col-2 border border-5 border-dark rounded-4 d-flex align-items-center" id="item' + id + '" data-bs-toggle="modal" data-bs-target="#show-item" data-id="' + element.id + '" style="height: 250px !important;"><img src="'+ element.img +'" class="item-img w-100"></div>';
 }
 for (let id = 0; id < items.length; id++) {
     document.getElementById("item" + id).addEventListener("click", getItem);

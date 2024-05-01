@@ -13,6 +13,7 @@ console.log(cases);
 if (cases.length != 0) {
     document.getElementById("nocases").style.display = "none";
 }
+cases.sort(function(a,b) {return (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0);} );
 
 let deleteCase;
 
@@ -26,7 +27,7 @@ document.getElementById("user-money").innerHTML = getMoney();
 const cases_div = document.getElementById("cases_div");
 for (let id = 0; id < cases.length; id++) {
     const element = cases[id];
-    cases_div.innerHTML += '<div type="button" class="btn btn-primary col-2 m-2" id="case' + id + '" data-bs-toggle="modal" data-bs-target="#caseModal" data-id="' + element.id + '"><img src="'+ element.img +'" class="w-100"></div>';
+    cases_div.innerHTML += '<div type="button" class="btn btn-primary col-2 border border-5 border-dark rounded-4 d-flex align-items-center" id="case' + id + '" data-bs-toggle="modal" data-bs-target="#caseModal" data-id="' + element.id + '" style="height: 250px !important;"><img src="'+ element.img +'" class="w-100 my-auto"></div>';
 }
 for (let id = 0; id < cases.length; id++) {
     document.getElementById("case" + id).addEventListener("click", getCase);
@@ -65,6 +66,8 @@ function displayCase(selectedCase) {
         const item = document.createElement('div');
         item.innerHTML = '<img src="'+ element.img +'" class=" w-100 hover-img"></div>';
         item.className = 'col-2 container'
+        item.dataset.title = element.name + " " + element.price + " Ft";
+        item.style.setProperty('--rarity', `var(--${element.rarity})`);
         
         caseItems.appendChild(item);
     });
